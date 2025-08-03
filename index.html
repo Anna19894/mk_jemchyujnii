@@ -25,65 +25,160 @@
         /* Анимированные мерцающие частички */
         .sparkle {
             position: fixed;
-            width: 4px;
-            height: 4px;
-            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
             border-radius: 50%;
             pointer-events: none;
-            animation: sparkleFloat 8s infinite linear;
             z-index: 1;
+            opacity: 0;
         }
 
-        .sparkle:nth-child(odd) {
-            animation-duration: 6s;
-            animation-delay: -2s;
+        .sparkle-1 {
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
+            animation: floatRandom1 12s infinite linear;
         }
 
-        .sparkle:nth-child(even) {
-            animation-duration: 10s;
-            animation-delay: -4s;
-        }
-
-        .sparkle:nth-child(3n) {
-            animation-duration: 12s;
-            animation-delay: -1s;
+        .sparkle-2 {
             width: 3px;
             height: 3px;
+            background: radial-gradient(circle, rgba(184, 230, 255, 0.8) 0%, rgba(184, 230, 255, 0) 70%);
+            animation: floatRandom2 15s infinite linear;
         }
 
-        .sparkle:nth-child(4n) {
-            animation-duration: 9s;
-            animation-delay: -3s;
+        .sparkle-3 {
             width: 5px;
             height: 5px;
-            background: radial-gradient(circle, rgba(184, 230, 255, 0.6) 0%, rgba(184, 230, 255, 0) 70%);
+            background: radial-gradient(circle, rgba(135, 206, 235, 0.7) 0%, rgba(135, 206, 235, 0) 70%);
+            animation: floatRandom3 10s infinite linear;
         }
 
-        .sparkle:nth-child(5n) {
-            animation-duration: 7s;
-            animation-delay: -5s;
+        .sparkle-4 {
             width: 2px;
             height: 2px;
-            background: radial-gradient(circle, rgba(135, 206, 235, 0.9) 0%, rgba(135, 206, 235, 0) 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 70%);
+            animation: floatRandom4 8s infinite linear;
         }
 
-        @keyframes sparkleFloat {
+        .sparkle-5 {
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, rgba(173, 216, 230, 0.6) 0%, rgba(173, 216, 230, 0) 70%);
+            animation: floatRandom5 18s infinite linear;
+        }
+
+        @keyframes floatRandom1 {
             0% {
-                transform: translateY(100vh) translateX(0px) rotate(0deg);
+                transform: translate(0, 0) rotate(0deg);
                 opacity: 0;
             }
             10% {
                 opacity: 1;
             }
             50% {
-                transform: translateY(50vh) translateX(20px) rotate(180deg);
                 opacity: 0.8;
             }
             90% {
                 opacity: 1;
             }
             100% {
-                transform: translateY(-10px) translateX(-10px) rotate(360deg);
+                transform: translate(var(--random-x), var(--random-y)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes floatRandom2 {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+                transform: translate(calc(var(--random-x) * 0.3), calc(var(--random-y) * 0.3)) rotate(90deg) scale(1);
+            }
+            50% {
+                opacity: 0.6;
+                transform: translate(calc(var(--random-x) * 0.7), calc(var(--random-y) * 0.7)) rotate(180deg) scale(1.2);
+            }
+            85% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--random-x), var(--random-y)) rotate(270deg) scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        @keyframes floatRandom3 {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.9;
+            }
+            40% {
+                transform: translate(calc(var(--random-x) * 0.4), calc(var(--random-y) * 0.6)) rotate(120deg);
+                opacity: 0.5;
+            }
+            60% {
+                transform: translate(calc(var(--random-x) * 0.7), calc(var(--random-y) * 0.3)) rotate(240deg);
+                opacity: 0.8;
+            }
+            80% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translate(var(--random-x), var(--random-y)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes floatRandom4 {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+                opacity: 0;
+            }
+            5% {
+                opacity: 1;
+            }
+            25% {
+                transform: translate(calc(var(--random-x) * 0.2), calc(var(--random-y) * 0.8)) rotate(45deg) scale(1.5);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translate(calc(var(--random-x) * 0.8), calc(var(--random-y) * 0.2)) rotate(315deg) scale(0.8);
+                opacity: 0.9;
+            }
+            95% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--random-x), var(--random-y)) rotate(360deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes floatRandom5 {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            8% {
+                opacity: 0.6;
+            }
+            30% {
+                transform: translate(calc(var(--random-x) * 0.5), calc(var(--random-y) * 0.2)) rotate(60deg);
+                opacity: 0.8;
+            }
+            70% {
+                transform: translate(calc(var(--random-x) * 0.2), calc(var(--random-y) * 0.8)) rotate(300deg);
+                opacity: 0.4;
+            }
+            92% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translate(var(--random-x), var(--random-y)) rotate(180deg);
                 opacity: 0;
             }
         }
@@ -750,40 +845,83 @@
     </div>
 
     <script>
-        // Создание анимированных мерцающих частичек
+        // Создание хаотично летающих мерцающих частичек
         function createSparkles() {
-            for (let i = 0; i < 100; i++) {
+            const sparkleTypes = ['sparkle-1', 'sparkle-2', 'sparkle-3', 'sparkle-4', 'sparkle-5'];
+            
+            for (let i = 0; i < 200; i++) {
                 const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle';
-                sparkle.style.left = Math.random() * 100 + 'vw';
-                sparkle.style.animationDelay = Math.random() * 12 + 's';
-                sparkle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                sparkle.className = 'sparkle ' + sparkleTypes[Math.floor(Math.random() * sparkleTypes.length)];
                 
-                // Добавляем случайное горизонтальное движение
-                const randomX = (Math.random() - 0.5) * 100;
+                // Случайная начальная позиция по всему экрану
+                const startX = Math.random() * window.innerWidth;
+                const startY = Math.random() * window.innerHeight;
+                
+                // Случайное направление движения
+                const randomX = (Math.random() - 0.5) * window.innerWidth * 2;
+                const randomY = (Math.random() - 0.5) * window.innerHeight * 2;
+                
+                sparkle.style.left = startX + 'px';
+                sparkle.style.top = startY + 'px';
                 sparkle.style.setProperty('--random-x', randomX + 'px');
+                sparkle.style.setProperty('--random-y', randomY + 'px');
+                
+                // Случайная задержка анимации
+                sparkle.style.animationDelay = Math.random() * 20 + 's';
                 
                 document.body.appendChild(sparkle);
             }
             
-            // Периодически добавляем новые частички
+            // Периодически добавляем новые частички для непрерывного эффекта
             setInterval(() => {
-                if (document.querySelectorAll('.sparkle').length < 150) {
-                    const sparkle = document.createElement('div');
-                    sparkle.className = 'sparkle';
-                    sparkle.style.left = Math.random() * 100 + 'vw';
-                    sparkle.style.animationDelay = '0s';
-                    sparkle.style.animationDuration = (Math.random() * 4 + 6) + 's';
-                    document.body.appendChild(sparkle);
-                    
-                    // Удаляем старые частички
-                    setTimeout(() => {
-                        if (sparkle.parentNode) {
-                            sparkle.parentNode.removeChild(sparkle);
+                if (document.querySelectorAll('.sparkle').length < 300) {
+                    for (let i = 0; i < 5; i++) {
+                        const sparkle = document.createElement('div');
+                        sparkle.className = 'sparkle ' + sparkleTypes[Math.floor(Math.random() * sparkleTypes.length)];
+                        
+                        // Случайное появление с любой стороны экрана
+                        let startX, startY;
+                        const side = Math.floor(Math.random() * 4);
+                        
+                        switch(side) {
+                            case 0: // сверху
+                                startX = Math.random() * window.innerWidth;
+                                startY = -10;
+                                break;
+                            case 1: // справа
+                                startX = window.innerWidth + 10;
+                                startY = Math.random() * window.innerHeight;
+                                break;
+                            case 2: // снизу
+                                startX = Math.random() * window.innerWidth;
+                                startY = window.innerHeight + 10;
+                                break;
+                            case 3: // слева
+                                startX = -10;
+                                startY = Math.random() * window.innerHeight;
+                                break;
                         }
-                    }, 12000);
+                        
+                        const randomX = (Math.random() - 0.5) * window.innerWidth * 1.5;
+                        const randomY = (Math.random() - 0.5) * window.innerHeight * 1.5;
+                        
+                        sparkle.style.left = startX + 'px';
+                        sparkle.style.top = startY + 'px';
+                        sparkle.style.setProperty('--random-x', randomX + 'px');
+                        sparkle.style.setProperty('--random-y', randomY + 'px');
+                        sparkle.style.animationDelay = '0s';
+                        
+                        document.body.appendChild(sparkle);
+                        
+                        // Удаляем старые частички через время
+                        setTimeout(() => {
+                            if (sparkle.parentNode) {
+                                sparkle.parentNode.removeChild(sparkle);
+                            }
+                        }, 20000);
+                    }
                 }
-            }, 500);
+            }, 800);
         }
 
         function openModal(modalId) {
@@ -815,6 +953,17 @@
                     }
                 });
             }
+        });
+
+        // Обновление позиций частичек при изменении размера окна
+        window.addEventListener('resize', function() {
+            const sparkles = document.querySelectorAll('.sparkle');
+            sparkles.forEach(sparkle => {
+                const randomX = (Math.random() - 0.5) * window.innerWidth * 1.5;
+                const randomY = (Math.random() - 0.5) * window.innerHeight * 1.5;
+                sparkle.style.setProperty('--random-x', randomX + 'px');
+                sparkle.style.setProperty('--random-y', randomY + 'px');
+            });
         });
 
         // Анимация появления карточек и создание частичек
